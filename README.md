@@ -1,69 +1,22 @@
-# Grape Suite
+# Sapiens Suite
 
-The grape suite is a suite consisting of following templates:
+The Sapiens Suite consists of following templates:
 
-- exercises (for exams, homework, etc.)
+- proposals
 
-- seminar papers
+- essays
+
+- papers
+
+- design documents
 
 - slides (using polylux)
-
-## Exercises
-
-Usable as an exercise sheet:
-
-<table>
-    <tr>
-        <td>
-            <a href="examples/homework01.typ">
-                <img src="img/homework01-1.png" width="250px">
-            </a>
-        </td>
-        <td>
-            <a href="examples/homework01.typ">
-                <img src="img/homework01-2.png" width="250px">
-            </a>
-        </td>
-        <td>
-            <a href="examples/homework01.typ">
-                <img src="img/homework01-3.png" width="250px">
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>Tasks</td>
-        <td>Hints</td>
-        <td>Solutions</td>
-    </tr>
-</table>
-
-Or for short reports/essays:
-
-<table>
-    <tr>
-        <td>
-            <a href="examples/essay01.typ">
-                <img src="img/essay01-1.png" width="250px">
-            </a>
-        </td>
-        <td>
-            <a href="examples/essay01.typ">
-                <img src="img/essay01-2.png" width="250px">
-            </a>
-        </td>
-        <td>
-            <a href="examples/essay01.typ">
-                <img src="img/essay01-3.png" width="250px">
-            </a>
-        </td>
-    </tr>
-</table>
 
 ### Setup
 
 ```typ
-#import "@preview/grape-suite:2.0.0": exercise
-#import exercise: project, task, subtask
+#import "@preview/sapiens-suite:1.0.0": proposal
+#import proposal: project, task, subtask
 
 #show: project.with(
     title: "Lorem ipsum dolor sit",

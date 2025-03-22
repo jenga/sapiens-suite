@@ -15,7 +15,7 @@
     no: none,
 
     // category of the document, eg. "Exam", "Handout", "Series"
-    type: [Exam],
+    type: [Assignment],
 
     // title of the document; if not set, type and suffix-title generate the title of the document
     title: none,
@@ -58,12 +58,6 @@
     show-solution-matrix-comment-field: false,
     solution-matrix-comment-field-value: [*Note:* #v(0.5cm)],
 
-    university: none,
-    faculty: none,
-    institute: none,
-    seminar: none,
-    semester: none,
-    docent: none,
     author: none,
     date: datetime.today(),
 
@@ -105,14 +99,6 @@
     distribution-header-point-value: [Point],
     distribution-header-point-grade: [Grade],
 
-    message: (points-sum, extrapoints-sum) => [In sum #points-sum + #extrapoints-sum P. are achievable. You achieved #box(line(stroke: purple, length: 1cm)) out of #points-sum points.],
-    grade-scale: (
-        ([excellent], 0.9),
-        ([very good], 0.8),
-        ([good], 0.7),
-        ([pass], 0.6),
-        ([fail], 0.49)),
-
     page-margins: none,
 
     text-font: ("Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Libertinus Serif"),
@@ -143,9 +129,9 @@
     set list(indent: 1em)
 
     show link: underline
-    show link: set text(fill: purple)
+    show link: set text(fill: blue)
 
-    show heading: set text(fill: purple)
+    show heading: set text(fill: blue)
     show heading: set par(justify: false)
     show heading: it => context {
         let num-style = it.numbering
@@ -157,38 +143,18 @@
         let num = text(weight: "thin", numbering(num-style, ..counter(heading).at(here()))+[ \u{200b}])
         let x-offset = -1 * measure(num).width
 
-        pad(left: x-offset, par(hanging-indent: -1 * x-offset, text(fill: purple.lighten(25%), num) + [] + text(fill: purple, it.body)))
+        pad(left: x-offset, par(hanging-indent: -1 * x-offset, text(fill: blue.lighten(25%), num) + [] + text(fill: blue, it.body)))
     }
-
-    let ufi = ()
-    if university != none { ufi.push(university) }
-    if faculty != none { ufi.push(faculty) }
-    if institute != none { ufi.push(institute) }
 
     set page(
         margin: if page-margins != none {page-margins} else {
-            (top: if ufi.len() <= 2 or not show-namefield {
-                3.5cm
-            } else {
-                4cm
-            }, bottom: 3cm)
+            (top: 3.5cm, bottom: 3cm)
         },
 
         header: if header != none {header} else [
             #set text(size: 0.75em)
 
             #let h-r = if header-left != none {header-left} else [
-                #let ufi = ufi.filter(e => e not in ("", none, []))
-                #if ufi.len() == 2 {
-                    ufi.join(", ")
-                    [\ ]
-                } else if ufi.len() > 0 {
-                    ufi.join([\ ])
-                    [\ ]
-                }
-                #ifnn-line(seminar)
-                #ifnn-line(semester)
-                #ifnn-line(docent)
                 #context {
                     if state("grape-suite-namefields").at(here()) != 1 {
                         if show-namefield {
@@ -241,11 +207,11 @@
                     h-l
                 )
             }
-        ] + v(-0.5em) + line(length: 100%, stroke: purple),
+        ] + v(-0.5em) + line(length: 100%, stroke: blue),
 
         footer: if footer != none {footer} else {
             set text(size: 0.75em)
-            line(length: 100%, stroke: purple) + v(-0.5em)
+            line(length: 100%, stroke: blue) + v(-0.5em)
 
             table(columns: (1fr, auto, 1fr),
                 align: top,

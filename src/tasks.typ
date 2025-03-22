@@ -10,17 +10,17 @@
 
     pad(bottom: 0.5cm,
         align(center,
-            text(fill: purple,
+            text(fill: blue,
                 size: 1.75em,
                 strong(title))))
 }
 
 #let make-element(type, no, title, body) = {
     block(inset: 7pt,
-        stroke: (bottom: (paint: purple, dash: "dashed")),
+        stroke: (bottom: (paint: blue, dash: "dashed")),
         fill: blue.lighten(75%), {
 
-        text(fill: purple, strong[#type #no] + title)
+        text(fill: blue, strong[#type #no] + title)
     })
 
     block(body)
@@ -176,7 +176,7 @@
     extra-task-type) = {
 
     let e = (
-        table.hline(stroke: purple),
+        table.hline(stroke: blue),
 
         table.cell(fill: blue.lighten(75%),
             strong(if extra [#extra-task-type ] else [#task-type ]) +
@@ -185,12 +185,12 @@
         table.cell(fill: blue.lighten(75%),
             align(center, strong[#box(line(length: 0.75cm)) / #points])),
 
-        table.hline(stroke: purple),
+        table.hline(stroke: blue),
 
         ..solutions.map(e => (
             e.at(1),
             align(center, box(line(length: 0.75cm)) + [ \/ #e.at(0)]),
-            table.hline(stroke: (paint: purple, dash: "dashed")),
+            table.hline(stroke: (paint: blue, dash: "dashed")),
         )).flatten()
     )
 
@@ -227,12 +227,12 @@
         stroke: none,
         inset: (x: 1em, y: 0.75em),
 
-        table.cell(fill: purple, text(fill: white,
+        table.cell(fill: blue, text(fill: white,
             align(horizon, strong(matrix-task-header)))),
 
-        table.vline(stroke: purple),
+        table.vline(stroke: blue),
 
-        table.cell(fill: purple, text(fill: white,
+        table.cell(fill: blue, text(fill: white,
             align(center, strong(achieved-points)))),
 
         ..tasks
@@ -252,7 +252,7 @@
                     task.task-type,
                     task.extra-task-type)}).flatten(),
 
-        table.cell(colspan: 2, fill: purple, v(-10pt)),
+        table.cell(colspan: 2, fill: blue, v(-10pt)),
 
         ..(if tasks.filter(task => task.extra and
                     task.solution != none and
@@ -274,7 +274,7 @@
                         task-type,
                         extra-task-type)}).flatten(),
 
-                table.cell(colspan: 2, fill: purple, v(-10pt))
+                table.cell(colspan: 2, fill: blue, v(-10pt))
             )
         } else { () }).flatten(),
 
@@ -306,10 +306,10 @@
 
     if points-sum-all > 0 {
         v(1fr)
-        set text(fill: purple)
+        set text(fill: blue)
         block(fill: blue.lighten(75%),
             breakable: false,
-            stroke: purple,
+            stroke: blue,
             inset: 1em,
             width: 100%, {
 
@@ -369,12 +369,12 @@
                     if last-to == to [#to] else [#last-to#[--]#to]
                 }),
 
-                table.hline(stroke: 1pt + purple),
+                table.hline(stroke: 1pt + blue),
 
                 strong(header-point-grade),
                 ..grade-scale
                     .rev()
-                    .map(e => (table.vline(stroke: 1pt + purple), text(size: 0.95em, e.at(1).first())))
+                    .map(e => (table.vline(stroke: 1pt + blue), text(size: 0.95em, e.at(1).first())))
                     .rev()
                     .flatten(),
             ))

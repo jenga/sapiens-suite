@@ -1,4 +1,5 @@
-#import "exercise.typ" as exercise
+#import "document.typ" as document
+#import "assignment.typ" as assignment
 #import "slides.typ" as slides
 #import "seminar-paper.typ" as seminar-paper
 #import "colors.typ" as colors
